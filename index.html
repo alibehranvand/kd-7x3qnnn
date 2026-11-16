@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>خانه‌دار شو</title>
+<meta name="theme-color" content="#0f766e">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="خانه‌دار شو">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="icon" href="icon-192.png">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f3f1ec;--card:#ffffff;--ink:#1b2724;--mut:#6c7a75;--line:#e7e2d8;--acc:#0f766e;--acc2:#14b8a6;--accSoft:#e0f3ef;--warn:#b45309;--warnSoft:#fdf1de;--bad:#c0262d;--badSoft:#fde6e6;--ok:#15803d;--okSoft:#dcf5e3;--gold:#b7891a;--goldSoft:#fbf1d6;--unk:#a8b3af;--btnInk:#fff;--shadow:0 1px 2px rgba(0,0,0,.04),0 10px 30px rgba(30,45,40,.07)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1312;--card:#151d1b;--ink:#e7efec;--mut:#8e9e98;--line:#25312e;--acc:#2dd4bf;--acc2:#14b8a6;--accSoft:#11312c;--warn:#f0a43a;--warnSoft:#3a2a12;--bad:#f2626a;--badSoft:#3a1719;--ok:#4ade80;--okSoft:#11301d;--gold:#e5b73b;--goldSoft:#33290f;--unk:#4b5955;--btnInk:#062a26;--shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0d1312;--card:#151d1b;--ink:#e7efec;--mut:#8e9e98;--line:#25312e;--acc:#2dd4bf;--acc2:#14b8a6;--accSoft:#11312c;--warn:#f0a43a;--warnSoft:#3a2a12;--bad:#f2626a;--badSoft:#3a1719;--ok:#4ade80;--okSoft:#11301d;--gold:#e5b73b;--goldSoft:#33290f;--unk:#4b5955;--btnInk:#062a26;--shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);color-scheme:dark}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;direction:rtl;background:var(--bg);color:var(--ink);font-family:Vazirmatn,Tahoma,system-ui,sans-serif;font-size:15px;line-height:1.6}
+button,input,select{font-family:inherit;font-size:inherit;color:inherit}
+.wrap{max-width:760px;margin:0 auto;padding-block:16px calc(96px + env(safe-area-inset-bottom,0px));padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header.top{display:flex;align-items:center;gap:12px;padding:6px 2px 14px}
+.logo{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,var(--acc),var(--acc2));display:grid;place-items:center;color:#fff;box-shadow:var(--shadow);flex:none}
+.top h1{font-size:19px;margin:0;font-weight:800;letter-spacing:-.2px}
+.top .sub{font-size:12.5px;color:var(--mut)}
+.top .menu{margin-inline-start:auto}
+.iconbtn{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:var(--card);display:grid;place-items:center;cursor:pointer}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px;box-shadow:var(--shadow);margin-bottom:14px}
+.card h2{font-size:15px;margin:0 0 12px;font-weight:700;display:flex;align-items:center;gap:8px}
+.card h2 .hint{font-weight:400;font-size:12px;color:var(--mut);margin-inline-start:auto}
+.hero{background:linear-gradient(140deg,#0f766e 0%,#115e59 55%,#134e4a 100%);color:#fff;border:none;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:auto -40px -60px auto;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.06)}
+.hero .lbl{opacity:.85;font-size:13px}
+.hero .big{font-size:30px;font-weight:800;letter-spacing:-.5px;margin:2px 0 10px}
+.hero .big small{font-size:14px;font-weight:500;opacity:.8}
+.bar{height:9px;border-radius:9px;background:rgba(255,255,255,.18);overflow:hidden}
+.bar>i{display:block;height:100%;border-radius:9px;background:#5eead4}
+.hero .row{display:flex;justify-content:space-between;font-size:12.5px;margin-top:8px;opacity:.92}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;box-shadow:var(--shadow)}
+.stat .l{font-size:12px;color:var(--mut)}
+.stat .v{font-size:19px;font-weight:800;margin-top:2px}
+.stat .s{font-size:11.5px;color:var(--mut);margin-top:2px}
+@media(min-width:640px){.grid{grid-template-columns:repeat(4,1fr)}}
+.chartbox svg{width:100%;height:auto;display:block}
+.chartbox .bar-g{cursor:pointer}
+.seldet{margin-top:10px;padding:10px 12px;border-radius:14px;background:var(--accSoft);font-size:13px}
+.seldet b{font-weight:800}
+.legend{display:flex;gap:14px;font-size:12px;color:var(--mut);margin-top:8px;flex-wrap:wrap}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-inline-end:5px;vertical-align:-1px}
+.tl{position:relative;padding-inline-start:20px}
+.tl::before{content:"";position:absolute;inset-block:6px;inset-inline-start:6px;width:2px;background:var(--line)}
+.tl .it{position:relative;padding:4px 0 14px}
+.tl .it::before{content:"";position:absolute;inset-inline-start:-19px;top:10px;width:12px;height:12px;border-radius:50%;background:var(--card);border:3px solid var(--acc)}
+.tl .when{font-weight:700;font-size:13.5px}
+.tl .what{font-size:12.5px;color:var(--mut)}
+.tl .after{font-size:13px;margin-top:3px}
+.down{color:var(--ok);font-weight:700}
+.hb{display:flex;align-items:center;gap:10px;margin:8px 0;font-size:13px}
+.hb .n{width:92px;flex:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hb .t{flex:1;height:10px;background:var(--line);border-radius:10px;overflow:hidden}
+.hb .t i{display:block;height:100%;background:linear-gradient(90deg,var(--acc2),var(--acc));border-radius:10px}
+.hb .a{width:84px;text-align:left;flex:none;font-weight:600;font-size:12.5px}
+.loan{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.loan:last-child{border-bottom:none}
+.day{width:46px;height:46px;border-radius:14px;background:var(--accSoft);color:var(--acc);display:grid;place-items:center;flex:none;text-align:center;line-height:1.1}
+.day b{font-size:17px;font-weight:800;display:block}
+.day span{font-size:9.5px}
+.loan .mid{flex:1;min-width:0}
+.loan .ttl{font-weight:700;font-size:14.5px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.tag{font-size:10.5px;font-weight:500;padding:1px 7px;border-radius:20px;background:var(--line);color:var(--mut)}
+.loan .meta{font-size:12px;color:var(--mut)}
+.loan .amt{font-weight:800;font-size:14.5px}
+.mini{height:5px;border-radius:5px;background:var(--line);margin-top:6px;overflow:hidden;max-width:180px}
+.mini i{display:block;height:100%;background:var(--acc)}
+.chip{font-size:11px;padding:2px 8px;border-radius:20px;font-weight:600;white-space:nowrap}
+.c-ok{background:var(--okSoft);color:var(--ok)}.c-warn{background:var(--warnSoft);color:var(--warn)}.c-bad{background:var(--badSoft);color:var(--bad)}.c-mut{background:var(--line);color:var(--mut)}
+.side{display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex:none}
+.btn{border:none;border-radius:12px;padding:8px 14px;font-weight:700;cursor:pointer;background:var(--acc);color:#fff;font-size:13px}
+.btn{color:var(--btnInk)}
+.btn.ghost{background:transparent;color:var(--mut);border:1px solid var(--line)}
+.btn.soft{background:var(--accSoft);color:var(--acc)}
+.btn.danger{background:var(--badSoft);color:var(--bad)}
+.btn.block{width:100%;padding:12px;font-size:14.5px}
+.btn.sm{padding:6px 10px;font-size:12px}
+.sechead{display:flex;align-items:center;justify-content:space-between;margin:4px 2px 10px}
+.sechead h3{margin:0;font-size:16px}
+.debt .top2{display:flex;align-items:center;gap:12px}
+.avatar{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:17px;background:var(--goldSoft);color:var(--gold);flex:none}
+.debt .nm{font-weight:800;font-size:15.5px}
+.debt .rm{font-size:12.5px;color:var(--mut)}
+.debt .big2{font-size:20px;font-weight:800;margin-inline-start:auto;text-align:left}
+.debt .big2 small{display:block;font-size:11px;font-weight:500;color:var(--mut)}
+.debt .prog{height:8px;border-radius:8px;background:var(--line);margin:12px 0 8px;overflow:hidden}
+.debt .prog i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),#f2c94c)}
+.debt .acts{display:flex;gap:8px;justify-content:flex-end}
+.hist{margin-top:10px;border-top:1px dashed var(--line);padding-top:8px;font-size:12.5px}
+.hist .h{display:flex;justify-content:space-between;align-items:center;padding:4px 0;color:var(--mut)}
+.hist .h b{color:var(--ink)}
+.x{border:none;background:none;color:var(--bad);cursor:pointer;font-size:16px;padding:0 6px}
+nav.bot{direction:rtl;position:fixed;inset-inline:0;bottom:0;background:color-mix(in srgb,var(--card) 88%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--line);display:flex;justify-content:center;padding:6px 8px calc(6px + env(safe-area-inset-bottom));z-index:20}
+nav.bot .in{display:flex;max-width:520px;width:100%;justify-content:space-around;align-items:center}
+nav.bot button{background:none;border:none;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:11.5px;color:var(--mut);cursor:pointer;padding:6px 12px;border-radius:12px}
+nav.bot button.on{color:var(--acc);font-weight:700}
+nav.bot .fab{width:52px;height:52px;border-radius:18px;background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;display:grid;place-items:center;box-shadow:0 8px 20px rgba(15,118,110,.35);margin-top:-22px;padding:0}
+.sheet-bg{position:fixed;direction:rtl;inset:0;background:rgba(0,0,0,.45);z-index:40;display:flex;align-items:flex-end;justify-content:center;animation:fd .2s}
+.sheet{background:var(--card);width:100%;max-width:560px;border-radius:24px 24px 0 0;padding:18px 18px calc(18px + env(safe-area-inset-bottom));max-height:92vh;overflow:auto;animation:up .25s cubic-bezier(.2,.8,.2,1)}
+@media(min-width:640px){.sheet-bg{align-items:center}.sheet{border-radius:24px}}
+.sheet h3{margin:0 0 14px;font-size:17px}
+.grab{width:40px;height:4px;border-radius:4px;background:var(--line);margin:-6px auto 12px}
+.f{margin-bottom:12px}
+.f label{display:block;font-size:12.5px;color:var(--mut);margin-bottom:5px}
+.f input,.f select{width:100%;padding:11px 12px;border-radius:12px;border:1px solid var(--line);background:var(--bg);outline:none}
+.f input:focus,.f select:focus{border-color:var(--acc)}
+.f .w{font-size:11.5px;color:var(--acc);margin-top:4px;min-height:16px}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btns{display:flex;gap:8px;margin-top:6px}
+.btns .btn{flex:1;padding:12px}
+@keyframes up{from{transform:translateY(40px);opacity:0}}
+@keyframes fd{from{opacity:0}}
+.toast{position:fixed;direction:rtl;bottom:calc(84px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);background:#1b2724;color:#fff;padding:10px 14px;border-radius:14px;display:flex;gap:14px;align-items:center;font-size:13px;z-index:50;box-shadow:var(--shadow);animation:up .2s;max-width:92vw}
+.toast button{background:none;border:none;color:#5eead4;font-weight:800;cursor:pointer}
+.empty{text-align:center;color:var(--mut);padding:24px 0;font-size:13.5px}
+details summary{cursor:pointer;color:var(--mut);font-size:13px;padding:6px 0}
+.muted{color:var(--mut)}
+.note{font-size:12px;color:var(--mut);background:var(--goldSoft);padding:10px 12px;border-radius:12px;margin-top:10px}
+.menu-list button{display:flex;width:100%;text-align:start;gap:10px;padding:13px 6px;border:none;background:none;border-bottom:1px solid var(--line);cursor:pointer;font-size:14.5px}
+.menu-list button:last-child{border-bottom:none}
+</style>
+</head>
+<body>
+
+<div dir="rtl" lang="fa" id="root">
+<div class="wrap">
+  <header class="top">
+    <div class="logo"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20h14V9.5"/><path d="M10 20v-5h4v5"/></svg></div>
+    <div><h1>سامانه خانه‌دار شو</h1><div class="sub" id="today"></div></div>
+    <button class="iconbtn menu" onclick="openMenu()" aria-label="منو"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/></svg></button>
+  </header>
+  <main id="app"></main>
+</div>
+<nav class="bot"><div class="in">
+  <button data-t="home" onclick="go('home')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 6-6"/></svg>گزارش</button>
+  <button data-t="loans" onclick="go('loans')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="15" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>اقساط</button>
+  <button class="fab" onclick="addQuick()" aria-label="افزودن"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+  <button data-t="debts" onclick="go('debts')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="9" cy="8" r="4"/><path d="M2 21c0-4 3-6 7-6s7 2 7 6"/><path d="M17 11l2 2 4-4"/></svg>بدهی‌ها</button>
+  <button data-t="hist" onclick="go('hist')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>سوابق</button>
+</div></nav>
+
+<script>
+const KEY='khanedarsho_v1';
+const MONTHS=['فروردین','اردیبهشت','خرداد','تیر','مرداد','شهریور','مهر','آبان','آذر','دی','بهمن','اسفند'];
+const uid=()=>Math.random().toString(36).slice(2,10)+Date.now().toString(36).slice(-3);
+const faD=s=>String(s).replace(/\d/g,d=>'۰۱۲۳۴۵۶۷۸۹'[d]);
+const enD=s=>String(s||'').replace(/[۰-۹]/g,d=>'۰۱۲۳۴۵۶۷۸۹'.indexOf(d)).replace(/[٠-٩]/g,d=>'٠١٢٣٤٥٦٧٨٩'.indexOf(d));
+const num=s=>{const v=parseFloat(enD(s).replace(/[^\d.]/g,''));return isNaN(v)?null:v};
+const fmt=n=>Math.round(n).toLocaleString('fa-IR');
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function cmp(n){n=Math.round(n);const a=Math.abs(n);
+  if(a>=1e9)return (n/1e9).toLocaleString('fa-IR',{maximumFractionDigits:2})+' میلیارد';
+  if(a>=1e6)return (n/1e6).toLocaleString('fa-IR',{maximumFractionDigits:2})+' میلیون';
+  if(a>=1e3)return (n/1e3).toLocaleString('fa-IR',{maximumFractionDigits:0})+' هزار';
+  return fmt(n)}
+function jNow(){const p=new Intl.DateTimeFormat('en-u-ca-persian-nu-latn',{year:'numeric',month:'numeric',day:'numeric'}).formatToParts(new Date());const g=t=>parseInt(p.find(x=>x.type===t).value);return{y:g('year'),m:g('month'),d:g('day')}}
+const J=jNow();const CUR=J.y*12+(J.m-1);
+const mName=k=>MONTHS[((k%12)+12)%12]+' '+faD(Math.floor(k/12));
+const mShort=k=>MONTHS[((k%12)+12)%12];
+const tsFa=ts=>new Intl.DateTimeFormat('fa-IR-u-ca-persian',{day:'numeric',month:'long',year:'numeric'}).format(new Date(ts));
+document.getElementById('today').textContent=new Intl.DateTimeFormat('fa-IR-u-ca-persian',{weekday:'long',day:'numeric',month:'long',year:'numeric'}).format(new Date());
+
+function seed(){return{loans:[],debts:[],mig1:1,mig2:1}}
+let S;
+try{S=JSON.parse(localStorage.getItem(KEY))}catch(e){S=null}
+if(!S||!S.loans)S=seed();
+if(!S.mig1){S.loans.forEach(l=>{
+  if(l.bank==='پاسارگاد'&&l.remaining==null){l.remaining=92;l.total=92;if(l.amount===2800000)l.amount=2727200}
+  if(l.bank==='صادرات'&&l.remaining==null){l.remaining=36;l.total=36}});S.mig1=1}
+if(!S.mig2){S.loans.forEach(l=>{if(l.bank==='ملی'&&l.day===2&&!l.history.length&&l.startKey==null)l.startKey=16868});S.mig2=1}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+save();
+let tab='home',sel=null;
+try{tab=sessionStorage.getItem('kt')||'home'}catch(e){}
+
+/* ---------- محاسبات ---------- */
+const active=l=>l.remaining==null||l.remaining>0;
+const paidNow=l=>l.lastPaidKey===CUR;
+const notYet=l=>(l.startKey||0)>CUR;
+const dueNow=l=>(active(l)||paidNow(l))&&!notYet(l);
+const firstK=l=>Math.max(l.startKey||0,paidNow(l)?CUR+1:CUR);
+function inMonth(l,k){
+  if(k===CUR)return dueNow(l)?(l.remaining==null?'u':'k'):0;
+  if(!active(l))return 0;const f=firstK(l);if(k<f)return 0;
+  if(l.remaining==null)return 'u';return k<f+l.remaining?'k':0}
+function monthTotals(k){let kn=0,un=0,cnt=0,list=[];for(const l of S.loans){const c=inMonth(l,k);if(c){cnt++;list.push(l);if(c==='u')un+=l.amount;else kn+=l.amount}}return{kn,un,t:kn+un,cnt,list}}
+const lastK=l=>firstK(l)+l.remaining-1;
+function stats(){
+  const thisM=S.loans.filter(dueNow);
+  const due=thisM.reduce((a,l)=>a+l.amount,0);
+  const paid=thisM.filter(paidNow).reduce((a,l)=>a+l.amount,0);
+  const known=S.loans.filter(l=>active(l)&&l.remaining!=null);
+  const unknown=S.loans.filter(l=>active(l)&&l.remaining==null);
+  const remTotal=known.reduce((a,l)=>a+l.amount*l.remaining,0);
+  const freeK=known.length?Math.max(...known.map(lastK)):null;
+  let dT=0,dC=0;for(const d of S.debts){const r=d.amount-d.payments.reduce((a,p)=>a+p.amount,0);if(d.unit==='coin')dC+=Math.max(0,r);else dT+=Math.max(0,r)}
+  return{due,paid,remTotal,freeK,unknown,known,dT,dC,count:thisM.length,paidCount:thisM.filter(paidNow).length}}
+const lname=l=>l.bank+(l.note?' · '+l.note:'');
+
+/* ---------- رندر ---------- */
+function go(t){tab=t;sel=null;try{sessionStorage.setItem('kt',t)}catch(e){}render();window.scrollTo({top:0,behavior:'smooth'})}
+function render(){
+  document.querySelectorAll('nav.bot button[data-t]').forEach(b=>b.classList.toggle('on',b.dataset.t===tab));
+  const a=document.getElementById('app');
+  a.innerHTML=tab==='home'?vHome():tab==='loans'?vLoans():tab==='debts'?vDebts():vHist();
+}
+function vHome(){
+  const s=stats();const pct=s.due?Math.round(s.paid/s.due*100):0;
+  let h=`<div class="card hero">
+    <div class="lbl">قسط‌های ماه ${MONTHS[J.m-1]}</div>
+    <div class="big">${cmp(s.due)} <small>تومان</small></div>
+    <div class="bar"><i style="width:${pct}%"></i></div>
+    <div class="row"><span>پرداخت‌شده: ${cmp(s.paid)} (${faD(s.paidCount)} از ${faD(s.count)})</span><span>مانده: ${cmp(s.due-s.paid)}</span></div>
+  </div>
+  <div class="grid">
+    <div class="stat"><div class="l">کل باقی‌مانده اقساط</div><div class="v">${cmp(s.remTotal)}</div><div class="s">${s.unknown.length?faD(s.unknown.length)+' قسط بدون مدت حساب نشده':'همه اقساط حساب شده'}</div></div>
+    <div class="stat"><div class="l">بدهی به اشخاص</div><div class="v">${cmp(s.dT)}</div><div class="s">${s.dC?'+ '+faD(s.dC.toLocaleString('en',{maximumFractionDigits:2}))+' سکه':'تومان'}</div></div>
+    <div class="stat"><div class="l">آخرین قسط مشخص</div><div class="v" style="font-size:16px">${s.freeK!=null?mName(s.freeK):'—'}</div><div class="s">${s.freeK!=null?faD(s.freeK-CUR+1)+' ماه دیگه':''}</div></div>
+    <div class="stat"><div class="l">تعداد اقساط فعال</div><div class="v">${faD(s.known.length+s.unknown.length)}</div><div class="s">${faD(s.unknown.length)} بدون مدت مشخص</div></div>
+  </div>`;
+  h+=vChart();h+=vMilestones();h+=vByBank();h+=vUpcoming();
+  return h}
+function vChart(){
+  const known=S.loans.filter(l=>active(l)&&l.remaining!=null);
+  let H=known.length?Math.max(...known.map(l=>lastK(l)-CUR+2)):6;H=Math.min(Math.max(H,6),24);
+  const data=[];for(let i=0;i<H;i++){data.push({k:CUR+i,...monthTotals(CUR+i)})}
+  const max=Math.max(...data.map(d=>d.t),1);
+  const W=640,Ht=250,pl=8,pr=8,pt=26,pb=34,cw=(W-pl-pr)/H,bw=Math.min(cw*.62,34);
+  let g='';
+  for(let t=1;t<=3;t++){const y=pt+(Ht-pt-pb)*(1-t/3);g+=`<line x1="${pl}" x2="${W-pr}" y1="${y}" y2="${y}" stroke="var(--line)" stroke-dasharray="3 4"/>`}
+  data.forEach((d,i)=>{
+    const x=W-pr-cw*(i+.5);const hk=(Ht-pt-pb)*d.kn/max,hu=(Ht-pt-pb)*d.un/max;const yb=Ht-pb;
+    const on=sel===d.k;
+    g+=`<g class="bar-g" onclick="selM(${d.k})"><rect x="${x-cw/2}" y="0" width="${cw}" height="${Ht}" fill="transparent"/>`;
+    if(on)g+=`<rect x="${x-cw/2+2}" y="${pt-18}" width="${cw-4}" height="${Ht-pt-pb+18}" rx="8" fill="var(--accSoft)"/>`;
+    if(hk)g+=`<rect x="${x-bw/2}" y="${yb-hk}" width="${bw}" height="${hk}" rx="${Math.min(6,bw/3)}" fill="url(#gk)"/>`;
+    if(hu)g+=`<rect x="${x-bw/2}" y="${yb-hk-hu}" width="${bw}" height="${hu}" rx="${Math.min(6,bw/3)}" fill="url(#hatch)"/>`;
+    const prev=data[i-1];
+    if(i===0||!prev||prev.t!==d.t||on){g+=`<text x="${x}" y="${yb-hk-hu-6}" text-anchor="middle" font-size="${H>14?10:11.5}" font-weight="700" fill="var(--ink)">${(d.t/1e6).toLocaleString('fa-IR',{maximumFractionDigits:1})}</text>`}
+    if(H<=12||i%2===0||on)g+=`<text x="${x}" y="${Ht-pb+16}" text-anchor="middle" font-size="${H>12?10:11}" fill="${on?'var(--acc)':'var(--mut)'}" font-weight="${on?700:400}">${mShort(d.k)}</text>`;
+    if((d.k%12)===0||i===0)g+=`<text x="${x}" y="${Ht-pb+30}" text-anchor="middle" font-size="9.5" fill="var(--mut)">${faD(Math.floor(d.k/12))}</text>`;
+    g+=`</g>`});
+  const svg=`<svg viewBox="0 0 ${W} ${Ht}" xmlns="http://www.w3.org/2000/svg"><defs>
+    <linearGradient id="gk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--acc2)"/><stop offset="1" stop-color="var(--acc)"/></linearGradient>
+    <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="var(--unk)" opacity=".55"/><line x1="0" y1="0" x2="0" y2="6" stroke="var(--unk)" stroke-width="3"/></pattern></defs>${g}</svg>`;
+  let det='';const sd=data.find(d=>d.k===sel);
+  if(sd){det=`<div class="seldet"><b>${mName(sd.k)}</b>: ${fmt(sd.t)} تومان — ${faD(sd.cnt)} قسط<br><span class="muted">${sd.list.map(l=>esc(lname(l))+' '+cmp(l.amount)).join('، ')}</span></div>`}
+  else det=`<div class="seldet muted" style="background:transparent;padding:6px 0 0">روی هر ستون بزن تا جزئیات اون ماه رو ببینی.</div>`;
+  return `<div class="card chartbox"><h2>بار ماهانه اقساط <span class="hint">میلیون تومان</span></h2>${svg}
+   <div class="legend"><span><i style="background:var(--acc)"></i>اقساط با مدت مشخص</span><span><i style="background:var(--unk)"></i>بدون مدت (فرض: ادامه دارد)</span></div>${det}</div>`}
+function selM(k){sel=sel===k?null:k;render()}
+function vMilestones(){
+  const known=S.loans.filter(l=>active(l)&&l.remaining!=null);
+  const grp={};known.forEach(l=>{const k=lastK(l);(grp[k]=grp[k]||[]).push(l)});
+  const ks=Object.keys(grp).map(Number).sort((a,b)=>a-b);
+  if(!ks.length)return '';
+  let h=`<div class="card"><h2>کِی سبک‌تر می‌شه؟</h2><div class="tl">`;
+  ks.forEach(k=>{const ls=grp[k];const drop=ls.reduce((a,l)=>a+l.amount,0);const after=monthTotals(k+1).t;
+    h+=`<div class="it"><div class="when">آخرین پرداخت: ${mName(k)}</div>
+      <div class="what">${ls.map(l=>esc(lname(l))+' ('+cmp(l.amount)+')').join('، ')} تموم می‌شه</div>
+      <div class="after">از ${mName(k+1)} ماهانه: <b>${cmp(after)}</b> <span class="down">▼ ${cmp(drop)}</span></div></div>`});
+  h+=`</div>`;
+  const un=S.loans.filter(l=>active(l)&&l.remaining==null);
+  if(un.length)h+=`<div class="note">مدت ${un.map(l=>esc(lname(l))).join('، ')} مشخص نیست؛ از تب اقساط تعداد ماه‌های باقی‌مونده‌شون رو وارد کن تا نمودار دقیق بشه.</div>`;
+  return h+`</div>`}
+function vByBank(){
+  const m={};S.loans.filter(dueNow).forEach(l=>{m[l.bank]=(m[l.bank]||0)+l.amount});
+  const arr=Object.entries(m).sort((a,b)=>b[1]-a[1]);if(!arr.length)return '';const mx=arr[0][1];
+  const own={};S.loans.filter(dueNow).forEach(l=>{const o=l.owner||'بدون نام';own[o]=(own[o]||0)+l.amount});
+  return `<div class="card"><h2>سهم هر بانک از قسط ماهانه</h2>${arr.map(([b,v])=>`<div class="hb"><span class="n">${esc(b)}</span><span class="t"><i style="width:${v/mx*100}%"></i></span><span class="a">${cmp(v)}</span></div>`).join('')}
+  <div class="legend" style="margin-top:12px">${Object.entries(own).map(([o,v])=>`<span>${esc(o)}: <b style="color:var(--ink)">${cmp(v)}</b></span>`).join('')}</div></div>`}
+function vUpcoming(){
+  const up=S.loans.filter(l=>dueNow(l)&&!paidNow(l)).sort((a,b)=>a.day-b.day).slice(0,5);
+  if(!up.length)return `<div class="card"><h2>این ماه</h2><div class="empty">همه اقساط این ماه پرداخت شده 🎉</div></div>`;
+  return `<div class="card"><h2>پرداخت‌نشده‌های این ماه <span class="hint"><a onclick="go('loans')" style="color:var(--acc);cursor:pointer">همه</a></span></h2>${up.map(loanRow).join('')}</div>`}
+function status(l){
+  if(paidNow(l))return `<span class="chip c-ok">پرداخت شد ✓</span>`;
+  if(!active(l))return `<span class="chip c-mut">تمام شده</span>`;
+  if(notYet(l))return `<span class="chip c-mut">شروع از ${mName(l.startKey)}</span>`;
+  if(l.day===J.d)return `<span class="chip c-warn">امروز</span>`;
+  if(l.day<J.d)return `<span class="chip c-bad">${faD(J.d-l.day)} روز گذشته</span>`;
+  return `<span class="chip c-mut">${faD(l.day-J.d)} روز دیگه</span>`}
+function loanRow(l){
+  const rem=l.remaining==null?'مدت نامشخص':(l.remaining>0?faD(l.remaining)+' قسط مانده':'تسویه شد');
+  const pr=(l.total&&l.remaining!=null)?`<div class="mini"><i style="width:${Math.round((l.total-l.remaining)/l.total*100)}%"></i></div>`:'';
+  const btn=paidNow(l)?`<button class="btn ghost sm" onclick="undoLoan('${l.id}')">برگردان</button>`:(active(l)&&!notYet(l)?`<button class="btn sm" onclick="payLoan('${l.id}')">پرداخت کردم</button>`:'');
+  return `<div class="loan"><div class="day"><b>${faD(l.day)}</b><span>هر ماه</span></div>
+   <div class="mid" onclick="editLoan('${l.id}')" style="cursor:pointer"><div class="ttl">${esc(l.bank)}${l.owner?`<span class="tag">${esc(l.owner)}</span>`:''}${l.note?`<span class="tag">${esc(l.note)}</span>`:''}</div>
+   <div class="meta"><span class="amt">${cmp(l.amount)}</span> · ${rem}</div>${pr}</div>
+   <div class="side">${status(l)}${btn}</div></div>`}
+function vLoans(){
+  const act=S.loans.filter(l=>active(l)||paidNow(l)).sort((a,b)=>a.day-b.day);
+  const done=S.loans.filter(l=>!active(l)&&!paidNow(l));
+  const s=stats();
+  let h=`<div class="sechead"><h3>اقساط ماهانه</h3><button class="btn soft sm" onclick="editLoan()">+ قسط جدید</button></div>
+  <div class="card" style="padding:12px 16px"><div style="display:flex;justify-content:space-between;font-size:13px"><span class="muted">جمع ماهانه</span><b>${fmt(s.due)} تومان</b></div>
+  <div style="display:flex;justify-content:space-between;font-size:13px"><span class="muted">مانده این ماه</span><b style="color:var(--bad)">${fmt(s.due-s.paid)} تومان</b></div></div>
+  <div class="card">${act.length?act.map(loanRow).join(''):'<div class="empty">قسطی ثبت نشده</div>'}</div>`;
+  if(done.length)h+=`<details class="card"><summary>اقساط تمام‌شده (${faD(done.length)})</summary>${done.map(loanRow).join('')}</details>`;
+  h+=`<p class="muted" style="font-size:12px;text-align:center">برای ویرایش یا حذف، روی اسم قسط بزن.</p>`;
+  return h}
+function dRem(d){return d.amount-d.payments.reduce((a,p)=>a+p.amount,0)}
+const dUnit=d=>d.unit==='coin'?'سکه':'تومان';
+const dVal=(d,v)=>d.unit==='coin'?faD(+v.toFixed(2))+' سکه':cmp(v)+' تومان';
+function vDebts(){
+  const s=stats();
+  let h=`<div class="sechead"><h3>بدهی به اشخاص</h3><button class="btn soft sm" onclick="editDebt()">+ شخص جدید</button></div>
+  <div class="grid" style="grid-template-columns:1fr 1fr"><div class="stat"><div class="l">جمع بدهی نقدی</div><div class="v">${cmp(s.dT)}</div><div class="s">${fmt(s.dT)} تومان</div></div>
+  <div class="stat"><div class="l">جمع سکه</div><div class="v">${faD(+s.dC.toFixed(2))}</div><div class="s">سکه</div></div></div>`;
+  if(!S.debts.length)h+=`<div class="card empty">کسی ثبت نشده</div>`;
+  S.debts.forEach(d=>{const r=dRem(d);const pct=d.amount?Math.min(100,Math.round((d.amount-r)/d.amount*100)):0;
+    h+=`<div class="card debt"><div class="top2"><div class="avatar">${esc(d.name.trim()[0]||'؟')}</div>
+     <div><div class="nm">${esc(d.name)}</div><div class="rm">کل: ${dVal(d,d.amount)}</div></div>
+     <div class="big2">${r<=0?'<span style="color:var(--ok)">تسویه ✓</span>':dVal(d,r)}<small>${r>0?'باقی‌مانده':''}</small></div></div>
+     <div class="prog"><i style="width:${pct}%"></i></div>
+     <div style="display:flex;align-items:center;justify-content:space-between"><span class="muted" style="font-size:12px">${faD(pct)}٪ پرداخت شده</span>
+     <div class="acts"><button class="btn ghost sm" onclick="editDebt('${d.id}')">ویرایش</button>${r>0?`<button class="btn sm" onclick="payDebt('${d.id}')">ثبت پرداخت</button>`:''}</div></div>
+     ${d.payments.length?`<div class="hist">${d.payments.slice().reverse().map(p=>`<div class="h"><span>${tsFa(p.ts)}${p.note?' · '+esc(p.note):''}</span><span><b>${dVal(d,p.amount)}</b><button class="x" onclick="delPay('${d.id}','${p.id}')" aria-label="حذف">×</button></span></div>`).join('')}</div>`:''}
+    </div>`});
+  return h}
+function vHist(){
+  const ev=[];S.loans.forEach(l=>l.history.forEach(h=>ev.push({ts:h.ts,t:'قسط '+lname(l),a:cmp(h.amount)+' تومان'})));
+  S.debts.forEach(d=>d.payments.forEach(p=>ev.push({ts:p.ts,t:'پرداخت به '+d.name,a:dVal(d,p.amount)})));
+  ev.sort((a,b)=>b.ts-a.ts);
+  const byM={};S.loans.forEach(l=>l.history.forEach(h=>{byM[h.key]=(byM[h.key]||0)+h.amount}));
+  let h=`<div class="sechead"><h3>سوابق پرداخت</h3></div>`;
+  const mk=Object.keys(byM).map(Number).sort((a,b)=>b-a);
+  if(mk.length)h+=`<div class="card"><h2>جمع اقساط پرداخت‌شده در هر ماه</h2>${mk.map(k=>`<div class="hb"><span class="n">${mName(k)}</span><span class="a" style="width:auto;margin-inline-start:auto">${fmt(byM[k])} تومان</span></div>`).join('')}</div>`;
+  h+=`<div class="card">${ev.length?ev.map(e=>`<div class="loan"><div class="mid"><div class="ttl">${esc(e.t)}</div><div class="meta">${tsFa(e.ts)}</div></div><div class="amt">${e.a}</div></div>`).join(''):'<div class="empty">هنوز پرداختی ثبت نشده</div>'}</div>`;
+  return h}
+
+/* ---------- عملیات ---------- */
+let toastT;
+function ask(msg,yes){sheet(`<h3>${msg}</h3><div class="btns"><button class="btn danger" id="cy">بله</button><button class="btn ghost" onclick="closeSheet()">انصراف</button></div>`);document.getElementById('cy').onclick=()=>{closeSheet();yes()}}
+function toast(msg,undo){document.querySelector('.toast')?.remove();const t=document.createElement('div');t.className='toast';t.innerHTML=`<span>${msg}</span>`;
+  if(undo){const b=document.createElement('button');b.textContent='برگردان';b.onclick=()=>{t.remove();undo()};t.appendChild(b)}
+  document.body.appendChild(t);clearTimeout(toastT);toastT=setTimeout(()=>t.remove(),4000)}
+const findL=id=>S.loans.find(l=>l.id===id);
+function payLoan(id){const l=findL(id);if(!l||paidNow(l)||notYet(l))return;
+  l.history.push({id:uid(),ts:Date.now(),key:CUR,prevKey:l.lastPaidKey,prevRem:l.remaining,amount:l.amount});
+  l.lastPaidKey=CUR;if(l.remaining!=null)l.remaining=Math.max(0,l.remaining-1);save();render();
+  toast(`قسط ${esc(l.bank)} ثبت شد${l.remaining===0?' — تمام شد 🎉':''}`,()=>undoLoan(id))}
+function undoLoan(id){const l=findL(id);const h=l&&l.history[l.history.length-1];if(!h||h.key!==CUR)return;
+  l.history.pop();l.lastPaidKey=h.prevKey;l.remaining=h.prevRem;save();render()}
+function sheet(html){closeSheet();const bg=document.createElement('div');bg.className='sheet-bg';bg.onclick=e=>{if(e.target===bg)closeSheet()};
+  bg.innerHTML=`<div class="sheet"><div class="grab"></div>${html}</div>`;document.body.appendChild(bg);bg.querySelectorAll('input[data-money]').forEach(moneyHint)}
+function closeSheet(){document.querySelector('.sheet-bg')?.remove()}
+function moneyHint(inp){const w=inp.parentElement.querySelector('.w');const f=()=>{const v=num(inp.value);
+  if(inp.dataset.money==='coin'){w.textContent=v!=null?faD(v)+' سکه':'';return}
+  w.textContent=v?fmt(v)+' تومان ('+cmp(v)+')':'';};inp.addEventListener('input',()=>{const v=num(inp.value);if(inp.dataset.money!=='coin'&&v!=null){inp.value=fmt(v)}f()});f()}
+const BANKS=['ملی','ملت','مهر','رسالت','صادرات','پاسارگاد','تجارت','سپه','مسکن','سامان','پارسیان','کشاورزی','رفاه','آینده','شهر'];
+function editLoan(id){const l=id?findL(id):null;
+  sheet(`<h3>${l?'ویرایش قسط':'قسط جدید'}</h3>
+  <div class="f"><label>بانک یا طلبکار</label><input id="fb" list="bl" value="${esc(l?.bank||'')}" placeholder="مثلاً رسالت"><datalist id="bl">${BANKS.map(b=>`<option value="${b}">`).join('')}</datalist></div>
+  <div class="f"><label>مبلغ هر قسط (تومان)</label><input id="fa" inputmode="numeric" data-money="t" value="${l?fmt(l.amount):''}" placeholder="مثلاً ۳٬۸۰۰٬۰۰۰"><div class="w"></div></div>
+  <div class="f2"><div class="f"><label>روز سررسید در ماه</label><input id="fd" inputmode="numeric" value="${l?faD(l.day):''}" placeholder="۱ تا ۳۱"></div>
+  <div class="f"><label>تعداد قسط باقی‌مانده</label><input id="fr" inputmode="numeric" value="${l&&l.remaining!=null?faD(l.remaining):''}" placeholder="خالی = نامشخص"></div></div>
+  <div class="f"><label>اولین قسط</label><select id="fs">${Array.from({length:13},(_,i)=>CUR+i).map(k=>`<option value="${k}"${(l?.startKey&&l.startKey>CUR?l.startKey:CUR)===k?' selected':''}>${k===CUR?'همین ماه ('+mName(k)+')':mName(k)}</option>`).join('')}</select></div>
+  <div class="f2"><div class="f"><label>به نام</label><input id="fo" list="ol" value="${esc(l?.owner||'')}" placeholder="خودم / مینا"><datalist id="ol"><option value="خودم"><option value="مینا"></datalist></div>
+  <div class="f"><label>توضیح</label><input id="fn" value="${esc(l?.note||'')}" placeholder="مثلاً بیمه ماشین"></div></div>
+  <div class="btns"><button class="btn" onclick="saveLoan('${id||''}')">ذخیره</button><button class="btn ghost" onclick="closeSheet()">انصراف</button></div>
+  ${l?`<div class="btns"><button class="btn danger" onclick="delLoan('${id}')">حذف این قسط</button></div>`:''}`)}
+function saveLoan(id){const g=i=>document.getElementById(i).value.trim();
+  const bank=g('fb'),amount=num(g('fa')),day=num(g('fd')),rs=g('fr'),rem=rs===''?null:num(rs);
+  if(!bank)return toast('اسم بانک رو بنویس');if(!amount)return toast('مبلغ رو وارد کن');if(!day||day<1||day>31)return toast('روز سررسید باید بین ۱ تا ۳۱ باشه');
+  const o={bank,amount,day:Math.round(day),remaining:rem==null?null:Math.round(rem),owner:g('fo'),note:g('fn'),startKey:(+g('fs')>CUR?+g('fs'):null)};
+  if(id){const l=findL(id);Object.assign(l,o);if(o.remaining!=null&&(!l.total||l.total<o.remaining))l.total=o.remaining+(l.history.length||0);if(o.remaining==null)l.total=null}
+  else S.loans.push({id:uid(),...o,total:o.remaining,lastPaidKey:null,history:[]});
+  save();closeSheet();render();toast('ذخیره شد')}
+function delLoan(id){ask('این قسط حذف بشه؟',()=>{S.loans=S.loans.filter(l=>l.id!==id);save();render()})}
+const findD=id=>S.debts.find(d=>d.id===id);
+function editDebt(id){const d=id?findD(id):null;
+  sheet(`<h3>${d?'ویرایش بدهی':'بدهی جدید'}</h3>
+  <div class="f"><label>نام شخص</label><input id="dn" value="${esc(d?.name||'')}" placeholder="مثلاً الهه"></div>
+  <div class="f"><label>واحد</label><select id="du" onchange="const i=document.getElementById('da');i.dataset.money=this.value==='coin'?'coin':'t';i.value='';i.dispatchEvent(new Event('input'))"><option value="toman"${d?.unit!=='coin'?' selected':''}>تومان</option><option value="coin"${d?.unit==='coin'?' selected':''}>سکه</option></select></div>
+  <div class="f"><label>کل مبلغ بدهی</label><input id="da" inputmode="decimal" data-money="${d?.unit==='coin'?'coin':'t'}" value="${d?(d.unit==='coin'?faD(d.amount):fmt(d.amount)):''}"><div class="w"></div></div>
+  <div class="btns"><button class="btn" onclick="saveDebt('${id||''}')">ذخیره</button><button class="btn ghost" onclick="closeSheet()">انصراف</button></div>
+  ${d?`<div class="btns"><button class="btn danger" onclick="delDebt('${id}')">حذف</button></div>`:''}`)}
+function saveDebt(id){const name=document.getElementById('dn').value.trim(),unit=document.getElementById('du').value,amount=num(document.getElementById('da').value);
+  if(!name)return toast('نام رو بنویس');if(!amount)return toast('مبلغ رو وارد کن');
+  if(id)Object.assign(findD(id),{name,unit,amount});else S.debts.push({id:uid(),name,unit,amount,payments:[]});save();closeSheet();render();toast('ذخیره شد')}
+function delDebt(id){ask('این بدهی حذف بشه؟',()=>{S.debts=S.debts.filter(d=>d.id!==id);save();render()})}
+function payDebt(id){const d=findD(id);
+  sheet(`<h3>پرداخت به ${esc(d.name)}</h3><p class="muted" style="margin-top:-8px;font-size:13px">باقی‌مانده: ${dVal(d,dRem(d))}</p>
+  <div class="f"><label>مبلغ پرداختی (${dUnit(d)})</label><input id="pa" inputmode="decimal" data-money="${d.unit==='coin'?'coin':'t'}"><div class="w"></div></div>
+  <div class="f"><label>توضیح (اختیاری)</label><input id="pn" placeholder="مثلاً کارت به کارت"></div>
+  <div class="btns"><button class="btn" onclick="savePay('${id}')">ثبت</button><button class="btn ghost" onclick="closeSheet()">انصراف</button></div>`);
+  setTimeout(()=>document.getElementById('pa')?.focus(),250)}
+function savePay(id){const d=findD(id),a=num(document.getElementById('pa').value);if(!a)return toast('مبلغ رو وارد کن');
+  const p={id:uid(),ts:Date.now(),amount:a,note:document.getElementById('pn').value.trim()};d.payments.push(p);save();closeSheet();render();
+  toast(`${dVal(d,a)} از بدهی ${esc(d.name)} کم شد`,()=>{d.payments=d.payments.filter(x=>x.id!==p.id);save();render()})}
+function delPay(did,pid){ask('این پرداخت حذف بشه؟',()=>{const d=findD(did);d.payments=d.payments.filter(p=>p.id!==pid);save();render()})}
+function addQuick(){sheet(`<h3>افزودن</h3><div class="menu-list">
+  <button onclick="editLoan()">🏦 قسط جدید</button><button onclick="editDebt()">👤 بدهی به شخص جدید</button>
+  ${S.debts.filter(d=>dRem(d)>0).map(d=>`<button onclick="payDebt('${d.id}')">💸 پرداخت به ${esc(d.name)}</button>`).join('')}</div>`)}
+function openMenu(){sheet(`<h3>تنظیمات و پشتیبان</h3><div class="menu-list">
+  <button onclick="doExport()">📋 کپی متن پشتیبان</button><button onclick="importUI()">📥 بازگردانی از متن پشتیبان</button>
+  <button onclick="ask('همه اطلاعات پاک و به حالت اولیه برگرده؟',()=>{S=seed();S.mig1=1;S.mig2=1;save();render()})" style="color:var(--bad)">↺ برگشت به اطلاعات اولیه</button></div>
+  <div class="note">اطلاعات فقط داخل مرورگر همین گوشی ذخیره می‌شه. هر چند وقت یک‌بار «کپی متن پشتیبان» رو بزن و متن رو یه جای امن (مثلاً پیام‌های ذخیره‌شده تلگرام) نگه دار.</div>`)}
+function doExport(){const t=JSON.stringify(S);
+  const ok=()=>{closeSheet();toast('متن پشتیبان کپی شد')};
+  const show=()=>sheet(`<h3>متن پشتیبان</h3><p class="muted" style="font-size:13px;margin-top:-6px">این متن رو انتخاب و کپی کن:</p><div class="f"><textarea id="bt" readonly style="width:100%;height:160px;padding:10px;border-radius:12px;border:1px solid var(--line);background:var(--bg);font-size:11px;direction:ltr">${esc(t)}</textarea></div>`);
+  try{navigator.clipboard.writeText(t).then(ok,()=>{show();setTimeout(()=>document.getElementById('bt')?.select(),100)})}catch(e){show()}}
+function importUI(){sheet(`<h3>بازگردانی</h3><div class="f"><label>متن پشتیبان رو اینجا بچسبون</label><textarea id="it" style="width:100%;height:160px;padding:10px;border-radius:12px;border:1px solid var(--line);background:var(--bg);font-size:11px;direction:ltr"></textarea></div>
+  <div class="btns"><button class="btn" id="ib">بازگردانی</button><button class="btn ghost" onclick="closeSheet()">انصراف</button></div>`);
+  document.getElementById('ib').onclick=()=>{try{const d=JSON.parse(document.getElementById('it').value);if(!d.loans||!d.debts)throw 0;S=d;save();closeSheet();render();toast('اطلاعات بازگردانی شد')}catch(x){toast('متن معتبر نیست')}}}
+render();
+if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
+</script>
+</div>
+
+</body>
+</html>
